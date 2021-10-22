@@ -1,6 +1,7 @@
 package com.example.pstlabstest.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -15,7 +16,7 @@ import java.util.Set;
 import static javax.persistence.FetchType.EAGER;
 
 @Entity
-@Data
+@Data @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "users")
@@ -32,10 +33,10 @@ public class User implements UserDetails {
     private String password;
 
     @Column(name = "first_name", nullable = false)
-    private String first_name;
+    private String firstName;
 
     @Column(name = "last_name", nullable = false)
-    private String last_name;
+    private String lastName;
 
     @Column(name = "phone_number", unique = true, nullable = false)
     private String phone;
@@ -70,7 +71,7 @@ public class User implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
         getUserRoles().forEach(userRole -> {
-            authorities.add(new SimpleGrantedAuthority(userRole.getRole_name()));
+            authorities.add(new SimpleGrantedAuthority(userRole.getName()));
         });
         return authorities;
     }

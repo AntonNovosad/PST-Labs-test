@@ -1,13 +1,14 @@
 package com.example.pstlabstest.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
-@Data
+@Data @Builder
 @AllArgsConstructor @NoArgsConstructor
 @Table(name = "resume")
 public class Resume {
