@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 public class UserController {
 
-//    private final UserService userService;
-//
-//    @PutMapping("/update/{userId}")
-//    public void update(@PathVariable long userId, String firstName, String lastName) {
-//        userService.update(userId, firstName, lastName);
-//    }
+    private final UserService userService;
+
+    @PutMapping("/update/{userId}")
+    public void update(@PathVariable long userId, String firstName, String lastName) {
+        userService.update(userId, firstName, lastName);
+    }
 }

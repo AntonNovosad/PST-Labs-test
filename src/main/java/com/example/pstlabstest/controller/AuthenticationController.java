@@ -1,11 +1,10 @@
 package com.example.pstlabstest.controller;
 
-import com.example.pstlabstest.dto.AuthenticationRequestDto;
+import com.example.pstlabstest.dto.request.AuthenticationRequestDto;
 import com.example.pstlabstest.entity.User;
 import com.example.pstlabstest.repository.UserRepository;
 import com.example.pstlabstest.security.JwtTokenProvider;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -40,7 +39,7 @@ public class AuthenticationController {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
             User user = userRepository.findByEmail(request.getEmail()).orElseThrow(() -> new UsernameNotFoundException("User doesn't exist"));
             Set<String> strings = new HashSet<>();
-            user.getUserRoles().forEach(role -> strings.add(role.getRole_name()));
+            user.getUserRoles().forEach(role -> strings.add(role.getName()));
             String token = jwtTokenProvider.createToken(request.getPassword(), strings);
             Map<Object, Object> response = new HashMap<>();
             response.put("email", request.getEmail());
