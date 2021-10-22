@@ -1,4 +1,4 @@
-package com.example.pstlabstest.dto;
+package com.example.pstlabstest.dto.request;
 
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;

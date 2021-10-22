@@ -1,4 +1,4 @@
-package com.example.pstlabstest.dto;
+package com.example.pstlabstest.dto.request;
 
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
@@ -10,7 +10,7 @@ import javax.validation.constraints.NotBlank;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ResumeDto {
+public class ResumeRequestDto {
 
     @NotNull @NotBlank
     private String name;
